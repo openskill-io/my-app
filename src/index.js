@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Main from './Main';
-import Cat from './Cat';
+import CatHome from './CatHome';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Cat />
-    {/* <Main /> */}
+    <CatHome />
   </React.StrictMode>,
   document.getElementById('root')
 );
