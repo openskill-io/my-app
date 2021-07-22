@@ -6,8 +6,12 @@ function Search(props) {
   }
 
   return (
-    <div style={{ textAlign: 'center', marginTop: 10 }}>
+    <div style={{ marginTop: 10, display: "flex", justifyContent: "center", alignItems: "center" }}>
       <input name="search" value={props.searchInput} placeholder="Search for cat" style={{ padding: 20 }} onChange={assignValueToSearchInput} />
+      <form >
+        <input type="checkbox" name="catWithText" value={props.isCatWithTextChecked} onClick={props.handleCatWithTextCheckBox} />
+        <label for="catWithText">Cat with text </label>
+      </form>
     </div>
   )
 }

@@ -2,10 +2,20 @@ import React, { useEffect, useState } from 'react';
 
 function Cat(props) {
   return (
-    <div>
-      {props.cats.map((cat) => {
-        return <img style={{ margin: 10 }} height={300} width={300} key={cat.id} src={`https://cataas.com/cat/${cat.id}`} />
-      })}
+    <div style={{ margin: "0 auto", maxWidth: "1080px" }}>
+      <div style={{ margin: "20px" }}>
+
+        {
+          props.cats.length === 1 && props.cats.map((cat) => {
+            return <img style={{ margin: 10 }} height={300} width={300} key={cat.id} src={cat} />
+          })
+        }
+        {
+          props.cats.length > 1 && props.cats.map((cat) => {
+            return <img style={{ margin: 10 }} height={300} width={300} key={cat.id} src={`https://cataas.com/cat/${cat.id}`} />
+          })
+        }
+      </div >
     </div>
   )
 }
