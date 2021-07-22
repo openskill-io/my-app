@@ -8,7 +8,10 @@ function CatHome() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    searchCats(searchInput);
+    const delaySearchTimeout = setTimeout(() => {
+      searchCats(searchInput);
+    }, 1000)
+    return () => clearTimeout(delaySearchTimeout)
   }, [searchInput]);
 
   const searchCats = (searchInput) => {
