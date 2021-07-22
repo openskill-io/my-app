@@ -6,10 +6,27 @@ function CatHome() {
   const [cats, setCats] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(true);
+  //could not find a way to implement useRef here (input field in another component)!!!
 
   useEffect(() => {
-    searchCats(searchInput);
+    //debouncer runs 1 second after state change
+    let debouncer = setTimeout(() => {
+      //do not run if search field goes back to empty string
+      if(searchInput !== '')
+        searchCats(searchInput);
+    }, 1000);
+    
+    //when state is changed a second time, return is called 
+    //before the above block is run; thus the old timeout is cleared
+    return () => {
+      clearTimeout(debouncer);
+    }
   }, [searchInput]);
+
+  //since above useEffect doesn't run for empty string 
+  useEffect(() => {
+    searchCats(searchInput)
+  }, [])
 
   const searchCats = (searchInput) => {
     setLoading(true);
@@ -39,7 +56,10 @@ function CatHome() {
 
   return (
     <div>
-      <Search searchInput={searchInput} assignValueToSearchInput={assignValueToSearchInput} />
+      <Search 
+        searchInput={searchInput}
+        assignValueToSearchInput={assignValueToSearchInput}
+      />
       {showCatData()}
     </div>
   )

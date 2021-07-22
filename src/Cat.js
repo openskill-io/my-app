@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import './Cat.css'
 
 function Cat(props) {
   return (
-    <div>
+    <div className="cat">
       {props.cats.map((cat) => {
-        return <img style={{ margin: 10 }} height={300} width={300} key={cat.id} src={`https://cataas.com/cat/${cat.id}`} />
+        return <img style={{ margin: 10 }} height={300} width={300} key={cat.id} src={`https://cataas.com/cat/${cat.id}`} alt="a perfect cat" />
       })}
     </div>
   )
