@@ -13,7 +13,7 @@ function CatHome() {
 
   const searchCats = (searchInput) => {
     setLoading(true);
-    let query = `https://cataas.com/api/cats?limit=500`;
+    let query = `https://cataas.com/api/cats?limit=10`;
     if (searchInput && searchInput.length > 3) {
       query = query + `&tags=${searchInput}`
     }
