@@ -17,6 +17,7 @@ function CatHome() {
     if (searchInput && searchInput.length > 3) {
       query = query + `&tags=${searchInput}`
     }
+    else {query = setLoading(false)}
     fetch(query)
       .then((response) => response.json())
       .then((catsdata) => {
