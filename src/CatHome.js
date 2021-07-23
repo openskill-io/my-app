@@ -10,12 +10,12 @@ function CatHome() {
 
   useEffect(() => {
     //debouncer runs 1 second after state change
-    let debouncer = setTimeout(() => {
+    const debouncer = setTimeout(() => {
       //do not run if search field goes back to empty string
-      if(searchInput !== '')
+      if (searchInput.length >= 3)
         searchCats(searchInput);
     }, 1000);
-    
+
     //when state is changed a second time, return is called 
     //before the above block is run; thus the old timeout is cleared
     return () => {
@@ -56,7 +56,7 @@ function CatHome() {
 
   return (
     <div>
-      <Search 
+      <Search
         searchInput={searchInput}
         assignValueToSearchInput={assignValueToSearchInput}
       />
